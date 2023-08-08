@@ -12,10 +12,10 @@ def main():
     auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
     api = tweepy.API(auth)
 
-    # Search for tweets about any topic
+    # Search for tweets about any product
     tweets = tweepy.Cursor(
         api.search_tweets,
-        q="#PlayStation4",
+        q="#product",
         count=100,
     ).items()
 
