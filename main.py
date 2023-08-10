@@ -20,17 +20,9 @@ def main():
     ).items()
 
     # Analyze the sentiment of each tweet
-    positive_tweets = 0
-    negative_tweets = 0
-    neutral_tweets = 0
-    for tweet in tweets:
-        sentiment = TextBlob(tweet.text).sentiment.polarity
-        if sentiment > 0:
-            positive_tweets += 1
-        elif sentiment < 0:
-            negative_tweets += 1
-        else:
-            neutral_tweets += 1
+    positive_tweets = [tweet for tweet in tweets if TextBlob(tweet.text).sentiment.polarity > 0]
+    negative_tweets = [tweet for tweet in tweets if TextBlob(tweet.text).sentiment.polarity < 0]
+    neutral_tweets = [tweet for tweet in tweets if TextBlob(tweet.text).sentiment.polarity == 0]
 
     # Print the results
     print("Number of positive tweets:", positive_tweets)
