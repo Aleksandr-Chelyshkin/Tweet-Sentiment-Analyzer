@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
+import os
 import tweepy
+from dotenv import load_dotenv
 from textblob import TextBlob
 
 def main():
-    credentials = {
-        "api_key": "API_KEY",
-        "api_secret": "API_SECRET",
-        "access_token": "ACCESS_TOKEN",
-        "access_token_secret": "ACCESS_TOKEN_SECRET"
-    }
+    # Load the stored environment variables
+    load_dotenv()
 
-    api_key = credentials["api_key"]
-    api_secret = credentials["api_secret"]
-    access_token = credentials["access_token"]
-    access_token_secret = credentials["access_token_secret"]
+    # Get the values
+    api_key = os.getenv("api_key")
+    api_secret = os.getenv("api_secret")
+    access_token = os.getenv("access_token")
+    access_token_secret = os.getenv("access_token_secret")
 
     # Authenticate with the Tweepy API
     auth = tweepy.OAuthHandler(api_key, api_secret)
