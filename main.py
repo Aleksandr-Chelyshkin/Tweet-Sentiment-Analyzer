@@ -1,21 +1,29 @@
-
+#!/usr/bin/env python3
 import tweepy
 from textblob import TextBlob
 
 def main():
-    api_key = "YOUR_API_KEY"
-    api_secret = "YOUR_API_SECRET"
-    access_token = "YOUR_ACCESS_TOKEN"
-    access_token_secret = "YOUR_ACCESS_TOKEN_SECRET"
+    credentials = {
+        "api_key": "API_KEY",
+        "api_secret": "API_SECRET",
+        "access_token": "ACCESS_TOKEN",
+        "access_token_secret": "ACCESS_TOKEN_SECRET"
+    }
+
+    api_key = credentials["api_key"]
+    api_secret = credentials["api_secret"]
+    access_token = credentials["access_token"]
+    access_token_secret = credentials["access_token_secret"]
 
     # Authenticate with the Tweepy API
-    auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
+    auth = tweepy.OAuthHandler(api_key, api_secret)
+    auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
 
     # Search for tweets about any product
     tweets = tweepy.Cursor(
         api.search_tweets,
-        q="#product",
+        q="product name",
         count=100,
     ).items()
 
@@ -25,9 +33,9 @@ def main():
     neutral_tweets = [tweet for tweet in tweets if TextBlob(tweet.text).sentiment.polarity == 0]
 
     # Print the results
-    print("Number of positive tweets:", positive_tweets)
-    print("Number of negative tweets:", negative_tweets)
-    print("Number of neutral tweets:", neutral_tweets)
+    print("Number of positive tweets:", len(positive_tweets))
+    print("Number of negative tweets:", len(negative_tweets))
+    print("Number of neutral tweets:", len(neutral_tweets))
 
 if __name__ == "__main__":
     main()
