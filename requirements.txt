@@ -1,4 +1,3 @@
 tweepy
-dotenv
-os
+python-dotenv
 textblob
