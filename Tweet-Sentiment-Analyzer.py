@@ -23,7 +23,7 @@ class TwitterSentimentAnalyzer:
     def analyze(self, query):
         # Search for tweets about any product
         tweets = tweepy.Cursor(
-            self.api.search,
+            self.api.search_tweets,
             q=query,
             count=100,
         ).items()
