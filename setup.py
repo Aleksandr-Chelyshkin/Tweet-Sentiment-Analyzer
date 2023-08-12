@@ -1,11 +1,12 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name="Tweet-Sentiment-Analyzer",
-    version="0.0.2",
-    description="This python script delves into the depths of Twitter to bring you real-time insights into public opinion.",
+    name="Tweets_Analyzer",
+    version="0.6",
+    description="A Python package for analyzing the sentiment of tweets.",
     author="Aleksandr",
     author_email="novacyan545@gmail.com",
-    url="https://github.com/Aleksandr-Chelyshkin/Tweet-Sentiment-Analyzer.git",
-    packages=["Tweet-Sentiment-Analyzer"],
-    )
+    url="https://github.com/Aleksandr-Chelyshkin/Tweets_Sentiment_Analyzer.git",
+    packages=find_packages(),
+    install_requires=["tweepy", "textblob", "python-dotenv"],
+)
