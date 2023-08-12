@@ -1,1 +1,1 @@
-
+from .twitter_auth import TwitterSentimentAnalyzer
