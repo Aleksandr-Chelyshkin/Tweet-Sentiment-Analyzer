@@ -1,16 +1,25 @@
+import argparse
 import os
 import tweepy
-from dotenv import load_dotenv
 from textblob import TextBlob
 
-# Load the stored environment variables
-load_dotenv()
+# Create an ArgumentParser object
+parser = argparse.ArgumentParser(description="Analyze Twitter sentiments")
 
-# Get the values
-api_key = os.getenv("api_key")
-api_secret = os.getenv("api_secret")
-access_token = os.getenv("access_token")
-access_token_secret = os.getenv("access_token_secret")
+# Add arguments for the API keys and tokens
+parser.add_argument("--api_key", required=True, help="Twitter API key")
+parser.add_argument("--api_secret", required=True, help="Twitter API secret key")
+parser.add_argument("--access_token", required=True, help="Twitter access token")
+parser.add_argument("--access_token_secret", required=True, help="Twitter access token secret")
+
+# Parse the command-line arguments
+args = parser.parse_args()
+
+# Get the values from the arguments
+api_key = args.api_key
+api_secret = args.api_secret
+access_token = args.access_token
+access_token_secret = args.access_token_secret
 
 class TwitterSentimentAnalyzer:
     def __init__(self):
