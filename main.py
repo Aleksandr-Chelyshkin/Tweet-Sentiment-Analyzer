@@ -53,10 +53,15 @@ def main():
     analyzer = TwitterSentimentAnalyzer()
     results = analyzer.analyze("product name")
 
-    # Return the results
-    return("Number of positive tweets:", results["positive"])
-    return("Number of negative tweets:", results["negative"])
-    return("Number of neutral tweets:", results["neutral"])
+    # Create a dictionary with the results
+    results_dict = {
+        "Number of positive tweets": results["positive"],
+        "Number of negative tweets": results["negative"],
+        "Number of neutral tweets": results["neutral"]
+    }
+
+    # Return the dictionary
+    return results_dict
 
 if __name__ == "__main__":
     main()
