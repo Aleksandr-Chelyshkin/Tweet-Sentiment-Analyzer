@@ -2,7 +2,7 @@
 This python script delves into the depths of Twitter to bring you real-time insights into public opinion.
 
 Installation
-> pip install Tweet-Sentiment-Analyzer
+> pip install Tweets-Analyzer
 
 The search returns a list of tweets, which the script iterates over. For each tweet, the script uses the textblob module to calculate the sentiment of the tweet and prints it to the console.
 
